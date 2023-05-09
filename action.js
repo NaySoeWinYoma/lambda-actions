@@ -5,6 +5,9 @@ const path = require("path");
 (() => {
   const nameToGreet = core.getInput("aws-key");
 
+  const projectPath = process.cwd();
+  console.log(projectPath);
+
   //joining path of directory
   const directoryPath = path.join(__dirname, "functions");
   //passsing directoryPath and callback function
