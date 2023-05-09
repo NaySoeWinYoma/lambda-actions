@@ -2834,6 +2834,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(186);
 const fs = __nccwpck_require__(147);
+const path = __nccwpck_require__(17);
 
 (() => {
   const nameToGreet = core.getInput("aws-key");
