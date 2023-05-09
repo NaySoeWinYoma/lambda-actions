@@ -7,7 +7,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ls -la
+    - run: cd ~ && ls
       shell: bash
     - name: Check Function Folder exists
       run: |
