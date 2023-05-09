@@ -9,3 +9,11 @@ runs:
   steps:
     - run: ls -la
       shell: bash
+    - name: Check Function Folder exists
+      run: |
+        if [ ! -d "~/functions" ] 
+        then
+            echo "Directory ~/functions DOES NOT exists." 
+            exit 9999 # die with error code 9999
+        fi 
+      shell: bash
