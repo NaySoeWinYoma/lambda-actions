@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const fs = require("fs")
+const fs = require("fs");
 
 
 (() => {
