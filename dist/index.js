@@ -2833,19 +2833,22 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(186);
-// const fs = require("fs");
+const fs = __nccwpck_require__(147);
+const path = __nccwpck_require__(17);
 
 (() => {
   const nameToGreet = core.getInput("aws-key");
 
   console.log(process.cwd());
 
-  // Read the contents of the 'function' folder
-//   const functionDir = "functions";
-//   const files = fs.readdirSync(functionDir);
+  // Construct the path to the 'function' folder
+  const functionDir = path.join(__dirname, "..", "functions");
 
-//   // Print the list of files in the folder
-//   console.log(files);
+  // Read the contents of the 'function' folder
+  const files = fs.readdirSync(functionDir);
+
+  // Print the list of files in the folder
+  console.log(files);
 
   console.log(`Hello ${nameToGreet}!`);
 })();
