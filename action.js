@@ -5,10 +5,10 @@ const path = require("path");
 (() => {
   const nameToGreet = core.getInput("aws-key");
 
-  console.log(process.cwd());
+    const dd = process.cwd()
 
   // Construct the path to the 'function' folder
-  const functionDir = path.join(__dirname, "..", "functions");
+  const functionDir = path.join(dd, "..", "functions");
 
   // Read the contents of the 'function' folder
   const files = fs.readdirSync(functionDir);
