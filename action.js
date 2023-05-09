@@ -1,15 +1,17 @@
 const core = require("@actions/core");
-const fs = require("fs");
+// const fs = require("fs");
 
 (() => {
   const nameToGreet = core.getInput("aws-key");
 
-  // Read the contents of the 'function' folder
-  const functionDir = "functions";
-  const files = fs.readdirSync(functionDir);
+  console.log(process.cwd());
 
-  // Print the list of files in the folder
-  console.log(files);
+  // Read the contents of the 'function' folder
+//   const functionDir = "functions";
+//   const files = fs.readdirSync(functionDir);
+
+//   // Print the list of files in the folder
+//   console.log(files);
 
   console.log(`Hello ${nameToGreet}!`);
 })();
