@@ -1,0 +1,9 @@
+name: 'Lambda Deploy'
+description: 'Deploy app on Lyrid'
+inputs:
+  aws-key:  
+    description: 'AWS Access '
+    required: true
+runs:
+  using: docker
+  image: Dockerfile
