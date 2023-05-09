@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/sethvargo/go-githubactions"
+)
 
 func main() {
-	fmt.Println("Ok")
+	val := githubactions.GetInput("val")
+
+	fmt.Println(val)
 }
