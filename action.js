@@ -1,20 +1,20 @@
 const core = require("@actions/core");
-const fs = require("fs");
-const path = require("path");
+const { exec } = require("child_process");
 
 (() => {
   const nameToGreet = core.getInput("aws-key");
 
-    const dd = process.cwd()
-
-  // Construct the path to the 'function' folder
-  const functionDir = path.join(dd, "..", "functions");
-
-  // Read the contents of the 'function' folder
-  const files = fs.readdirSync(functionDir);
-
-  // Print the list of files in the folder
-  console.log(files);
-
+  exec("ls -la", (error, stdout, stderr) => {
+      if (error) {
+          console.log(`error: ${error.message}`);
+          return;
+      }
+      if (stderr) {
+          console.log(`stderr: ${stderr}`);
+          return;
+      }
+      console.log(`stdout: ${stdout}`);
+  });
+  
   console.log(`Hello ${nameToGreet}!`);
 })();

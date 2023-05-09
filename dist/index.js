@@ -2711,6 +2711,14 @@ module.exports = require("assert");
 
 /***/ }),
 
+/***/ 81:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("child_process");
+
+/***/ }),
+
 /***/ 113:
 /***/ ((module) => {
 
@@ -2833,23 +2841,23 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(186);
-const fs = __nccwpck_require__(147);
-const path = __nccwpck_require__(17);
+const { exec } = __nccwpck_require__(81);
 
 (() => {
   const nameToGreet = core.getInput("aws-key");
 
-    const dd = process.cwd()
-
-  // Construct the path to the 'function' folder
-  const functionDir = path.join(dd, "..", "functions");
-
-  // Read the contents of the 'function' folder
-  const files = fs.readdirSync(functionDir);
-
-  // Print the list of files in the folder
-  console.log(files);
-
+  exec("ls -la", (error, stdout, stderr) => {
+      if (error) {
+          console.log(`error: ${error.message}`);
+          return;
+      }
+      if (stderr) {
+          console.log(`stderr: ${stderr}`);
+          return;
+      }
+      console.log(`stdout: ${stdout}`);
+  });
+  
   console.log(`Hello ${nameToGreet}!`);
 })();
 
