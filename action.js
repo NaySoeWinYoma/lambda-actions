@@ -9,7 +9,7 @@ const path = require("path");
   console.log(projectPath);
 
   //joining path of directory
-  const directoryPath = path.join(__dirname, "functions");
+  const directoryPath = path.join(projectPath, "functions");
   //passsing directoryPath and callback function
   fs.readdir(directoryPath, function (err, files) {
     //handling error
