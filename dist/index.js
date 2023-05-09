@@ -2839,6 +2839,8 @@ const path = __nccwpck_require__(17);
 (() => {
   const nameToGreet = core.getInput("aws-key");
 
+  console.log(__dirname)
+
   //joining path of directory
   const directoryPath = path.join(process.cwd());
   //passsing directoryPath and callback function
