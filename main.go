@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	val := githubactions.GetInput("val")
+	val := githubactions.GetInput("aws-key")
 
 	fmt.Println(val)
 }
