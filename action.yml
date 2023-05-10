@@ -11,3 +11,5 @@ runs:
   steps:
     - run: ls -la
       shell: bash
+    - run: cd functions && ls
+      shell: bash
