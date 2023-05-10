@@ -1,8 +1,9 @@
 const fs = require("fs");
 
+(() => {
+  const files = fs.readdirSync("functions");
 
-fs.writeFileSync('test.tf', "Test");
-
-const content = fs.readFileSync("test.tf", "utf8");
-
-console.log(content)
+  files.forEach((f) => {
+    console.log(f)
+  })
+})();
