@@ -78,7 +78,7 @@ func createFunction(lambdaFunction LambdaFunction) {
 	fmt.Print("Success")
 }
 
-func main() {
+func main2() {
 	lambdaFunctions := []LambdaFunction{}
 
 	// define the path to the functions folder
@@ -127,4 +127,20 @@ func main() {
 			createFunction(f)
 		}
 	}
+}
+
+func main() {
+	fmt.Println("HI Actions")
+
+	err := filepath.Walk("functions", func(path string, info os.FileInfo, err error) error {
+
+		fmt.Println(info.Name())
+
+		return nil
+	})
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
 }

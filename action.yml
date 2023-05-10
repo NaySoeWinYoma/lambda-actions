@@ -7,9 +7,11 @@ inputs:
     default: "functions"
     required: true
 runs:
-  using: composite
-  steps:
-    - run: ls -la
-      shell: bash
-    - run: cd functions && ls
-      shell: bash
+  using: docker
+  image: Dockerfile
+  # using: composite
+  # steps:
+  #   - run: ls -la
+  #     shell: bash
+  #   - run: cd functions && ls
+  #     shell: bash
