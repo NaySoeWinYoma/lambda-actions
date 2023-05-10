@@ -1,8 +1,10 @@
 name: 'Lambda Deploy'
 description: 'Deploy app on Lyrid'
+
 inputs:
-  aws-key:  
-    description: 'AWS Access '
+  functionFolder:  
+    description: 'Lambda Function Folder Name'
+    default: "functions"
     required: true
 runs:
   using: docker

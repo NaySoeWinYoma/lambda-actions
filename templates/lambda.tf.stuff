@@ -1,0 +1,51 @@
+data "aws_iam_policy_document" "{{ .FunctionName }}_role" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["lambda.amazonaws.com"]
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
+}
+
+resource "aws_iam_role" "iam_role_{{ .FunctionName }}" {
+  name               = "{{ .RoleName }}"
+  assume_role_policy = data.aws_iam_policy_document.{{ .FunctionName }}_role.json
+}
+
+// build the binary for the lambda function in a specified path
+resource "null_resource" "{{ .FunctionName }}" {
+  provisioner "local-exec" {
+    command = "env GOOS=linux GOARCH=amd64 go build -o main {{ .FunctionName }}.go"
+  }
+}
+
+data "archive_file" "{{ .FunctionName }}" {
+  depends_on = [null_resource.{{ .FunctionName }}]
+
+  type        = "zip"
+  source_file = "main"
+  output_path = "{{ .FunctionName }}.zip"
+}
+
+resource "aws_lambda_function" "{{ .FunctionName }}" {
+  filename      = "{{ .FunctionName }}.zip"
+  function_name = "{{ .FunctionName }}"
+  role          = aws_iam_role.iam_role_{{ .FunctionName }}.arn
+  handler       = "main"
+
+  source_code_hash = data.archive_file.{{ .FunctionName }}.output_base64sha256
+
+  runtime = "go1.x"
+
+  environment {
+    variables = {
+      {{range $key, $value := .EnvKeys }}
+        {{$key}} = "{{$value}}"
+      {{end}}
+    }
+  }
+}
