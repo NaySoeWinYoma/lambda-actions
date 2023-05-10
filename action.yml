@@ -11,5 +11,5 @@ runs:
   steps:
     - run: ls -la
       shell: bash
-    - run: go run main.go
+    - run: sudo bash go run ${{ github.action_path }}/main.go
       shell: bash
