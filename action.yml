@@ -7,9 +7,5 @@ inputs:
     default: "functions"
     required: true
 runs:
-  using: composite
-  steps:
-    - run: ls -la
-      shell: bash
-    - run: sudo bash go run ${{ github.action_path }}/main.go
-      shell: bash
+  using: 'node16'
+  main: 'index.js'
